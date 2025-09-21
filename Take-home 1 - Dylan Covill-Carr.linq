@@ -69,3 +69,16 @@ Employees
 	})
 	.Dump();
 	
+//Question 5
+
+Clubs
+	.Select(x => new
+	{
+		Supervisor = x.Employee == null ? "Unknown" : $"{x.Employee.FirstName} {x.Employee.LastName}",
+		Club = x.ClubName,
+		MemberCount = x.ClubMembers.Count(),
+		Activities = x.ClubActivities.Count() == 0 ? "None Schedule" : x.ClubActivities.Count().ToString()
+	})
+	.OrderByDescending(x => x.MemberCount)
+	.Dump();
+	
